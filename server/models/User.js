@@ -1,0 +1,51 @@
+const mongoose=require("mongoose");
+
+const UserSchemma=new mongoose.Schema({
+    firstName:{
+        type:String,
+        required:true,
+        trim:true,
+    },
+    lastName:{
+        type:String,
+        trim:true,
+    },
+    email:{
+        type:String,
+        required:true,
+    },
+    phoneNumber:{
+        type:String,
+        trim:true,
+    },
+    password:{
+        type:String,
+        required:true,
+    },
+    cpassword:{
+        type:String,
+        required:true,
+    },
+    token:{
+        type:String,
+    },
+    resetPasswordExpires:{
+        type:Date,
+    },
+    role:{
+        type:String,
+        trim:true
+    },
+    items_bought:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Items_Model",
+        }
+    ],
+    address:{
+        type:String,
+        trim:true,
+    }
+})
+
+module.exports=mongoose.model("UserModel",UserSchemma);
